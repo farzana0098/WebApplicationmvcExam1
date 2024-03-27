@@ -1,0 +1,53 @@
+﻿
+@model IEnumerable<WebApplicationmvcExam1.Models.StudentMark>
+@{
+    Layout = null;
+}
+
+
+
+
+
+<table class="table-active table-borderless table table-hover table-responsive" id="experienceTable">
+    <thead class="table-info">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ObtainedNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.SubjectName)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.TotalNumber)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.ObtainedNumber)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.StartDate)
+                </td>
+                <td class="form-group">
+                    @Html.DisplayFor(m => e.EndDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,72 @@
+﻿
+@model WebApplicationmvcExam1.Models.Student
+
+
+@{
+    Layout = null;
+
+}
+
+
+
+
+
+<table class="table-active table-borderless table table-hover table-responsive">
+    <thead class="table-info text-lg-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMarks.First().SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMarks.First().TotalNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMarks.First().ObtainedNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMarks.First().StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMarks.First().EndDate)
+            </th>
+            <th>
+                <button class="btn btn-sm btn-close-white btn-outline-success" type="submit" name="command" value="add">Add StudentMark</button>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.StudentMarks.Count; i++)
+        {
+            <tr>
+                <td class="form-group">
+
+                    @Html.HiddenFor(m => Model.StudentMarks[i].StudentID)
+                    @Html.TextBoxFor(m => Model.StudentMarks[i].SubjectName, new { @class = "form-control" })
+                </td>
+                <td class="form-group">
+                    @Html.TextBoxFor(m => Model.StudentMarks[i].TotalNumber, new { @class = "form-control" })
+                </td>
+                <td class="form-group">
+                    @Html.TextBoxFor(m => Model.StudentMarks[i].ObtainedNumber, new { @class = "form-control" })
+                </td>
+                <td class="form-group">
+                    @*@Html.TextBoxFor(m => Model.Experiences[i].StartDate, "{0:mm/dd/yyyy}", new { type = "date", value = Model.Experiences[i].StartDate, @class = "form-control" })*@
+                    @Html.EditorFor(m => Model.StudentMarks[i].StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td class="form-group">
+                    @Html.EditorFor(m => Model.StudentMarks[i].EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-close-white btn-outline-success" type="submit" name="command" value="delete-@i">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                Total StudentMark : @Model.StudentMarks.Count
+            </td>
+        </tr>
+    </tfoot>
+</table>
